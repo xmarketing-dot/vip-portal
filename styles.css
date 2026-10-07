@@ -1,345 +1,309 @@
 /* ==========================================================================
-   VIP PORTAL — ROMANTIC LUXURY DATE & SEDUCTION AESTHETIC (RAYA / HIGH-END DATE)
-   Playfair Display + Rose Champagne Velvet Glow + Monochromatic Warmth
+   VIP PORTAL — CLEAN, ULTRA-RESPONSIVE LUXURY MOBILE-FIRST DESIGN
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cinzel:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Sensual Velvet Romance Palette */
-  --bg-deep: #070507;
-  --bg-card: rgba(20, 14, 20, 0.75);
-  --bg-card-hover: rgba(30, 20, 30, 0.9);
-  --bg-card-elevated: #160f17;
-
-  /* Rose Champagne Accents */
-  --rose-glow: rgba(244, 63, 94, 0.25);
-  --rose-primary: #f43f5e;
-  --rose-soft: #fb7185;
-  --rose-light: #fecdd3;
-  --champagne: #fef08a;
-  --champagne-gold: #fbbf24;
-
-  --gradient-rose: linear-gradient(135deg, #fb7185 0%, #f43f5e 50%, #be123c 100%);
-  --gradient-champagne: linear-gradient(135deg, #fff1f2 0%, #fda4af 60%, #fb7185 100%);
-  --gradient-card-border: linear-gradient(135deg, rgba(251, 113, 133, 0.3) 0%, rgba(255, 255, 255, 0.05) 100%);
-
-  /* Border Tokens */
-  --border-romance: rgba(251, 113, 133, 0.14);
-  --border-romance-hover: rgba(251, 113, 133, 0.4);
-  --border-subtle: rgba(255, 255, 255, 0.07);
-
-  /* Text Colors */
-  --text-pure: #ffffff;
+  --bg: #09070a;
+  --surface: rgba(22, 16, 22, 0.7);
+  --surface-hover: rgba(32, 22, 32, 0.85);
+  --surface-solid: #150f16;
+  
+  --border: rgba(251, 113, 133, 0.16);
+  --border-hover: rgba(251, 113, 133, 0.4);
+  
+  --rose-start: #fb7185;
+  --rose-end: #e11d48;
+  --gradient-rose: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
+  --gradient-champagne: linear-gradient(135deg, #fef08a 0%, #f43f5e 100%);
+  
+  --text: #ffffff;
   --text-soft: #fce7f3;
-  --text-secondary: #c4b5bd;
-  --text-muted: #837580;
-
-  /* Fonts */
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-accent: 'Cinzel', serif;
-
-  /* Radii */
-  --radius-pill: 9999px;
-  --radius-card: 24px;
-  --radius-tile: 16px;
-
-  /* Shadows */
-  --shadow-romance: 0 20px 45px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(244, 63, 94, 0.15);
-  --shadow-card-hover: 0 25px 50px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(244, 63, 94, 0.3);
-  --transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  --text-muted: #9c8e97;
+  
+  --radius-full: 9999px;
+  --radius-card: 20px;
+  --radius-sm: 12px;
+  
+  --transition: all 0.22s ease;
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   font-size: 16px;
-  background-color: var(--bg-deep);
-  color: var(--text-pure);
+  background-color: var(--bg);
+  color: var(--text);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: var(--bg-deep);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg);
   background-image: 
-    radial-gradient(ellipse 90% 55% at 50% -10%, rgba(225, 29, 72, 0.18) 0%, transparent 60%),
-    radial-gradient(circle at 10% 40%, rgba(244, 63, 94, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 90% 70%, rgba(217, 70, 239, 0.07) 0%, transparent 45%);
+    radial-gradient(circle at 50% 0%, rgba(225, 29, 72, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 100% 40%, rgba(244, 63, 94, 0.06) 0%, transparent 40%);
   background-attachment: fixed;
-  line-height: 1.6;
+  line-height: 1.5;
   min-height: 100vh;
-  padding-bottom: 95px;
+  padding-bottom: calc(85px + env(safe-area-inset-bottom, 20px));
   overflow-x: hidden;
 }
 
-/* ── CONTAINER ──────────────────────────────────────────────────────────── */
+/* Container */
 .container {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 16px;
 }
 
-/* ── SEDUCTIVE FLOATING NAVBAR ───────────────────────────────────────────── */
-.nav-holder {
+/* ── HEADER / NAVBAR ── */
+.nav-wrapper {
   position: sticky;
-  top: 1.25rem;
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  padding: 0 1rem;
-  margin-bottom: 2.5rem;
+  top: 12px;
+  z-index: 90;
+  padding: 0 12px;
+  margin-bottom: 24px;
 }
-.nav-romantic {
-  width: 100%;
-  max-width: 960px;
-  background: rgba(18, 12, 19, 0.75);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--border-romance);
-  border-radius: var(--radius-pill);
-  padding: 0.6rem 0.85rem 0.6rem 1.5rem;
+.navbar {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(18, 12, 19, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 8px 12px 8px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(244, 63, 94, 0.1);
-  transition: var(--transition);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
-.nav-romantic:hover {
-  border-color: var(--border-romance-hover);
-}
-.nav-brand {
+.brand {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 8px;
   text-decoration: none;
-  font-family: var(--font-serif);
+  font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
+  color: var(--text);
   letter-spacing: 0.02em;
-  color: var(--text-pure);
 }
-.nav-brand span.heart {
-  color: var(--rose-primary);
+.brand .heart {
+  color: #f43f5e;
   font-size: 0.95rem;
-  animation: heartPulse 2.2s infinite ease-in-out;
+  animation: pulse 2s infinite ease-in-out;
 }
-@keyframes heartPulse {
+@keyframes pulse {
   0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.25); opacity: 1; filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.8)); }
+  50% { transform: scale(1.25); opacity: 1; }
 }
-.nav-brand-tag {
-  font-family: var(--font-sans);
+.brand-pill {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.65rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--rose-soft);
+  color: #fb7185;
   background: rgba(244, 63, 94, 0.12);
   border: 1px solid rgba(244, 63, 94, 0.25);
-  padding: 0.2rem 0.55rem;
-  border-radius: var(--radius-pill);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
 }
-.nav-ctas {
+.nav-actions {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 8px;
 }
 
-/* ── BUTTONS (ROMANTIC ROSE & VELVET SILK) ───────────────────────────────── */
+/* ── BUTTONS ── */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.35rem;
-  border-radius: var(--radius-pill);
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
   font-size: 0.88rem;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: var(--transition);
   border: 1px solid transparent;
+  transition: var(--transition);
   white-space: nowrap;
+}
+.btn:active {
+  transform: scale(0.97);
 }
 .btn-rose {
   background: var(--gradient-rose);
-  color: #fff;
-  box-shadow: 0 8px 25px rgba(244, 63, 94, 0.4);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(225, 29, 72, 0.35);
 }
 .btn-rose:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 14px 35px rgba(244, 63, 94, 0.6);
+  box-shadow: 0 6px 20px rgba(225, 29, 72, 0.5);
 }
 .btn-champagne {
   background: var(--gradient-champagne);
   color: #170912;
   font-weight: 700;
-  box-shadow: 0 8px 25px rgba(253, 164, 175, 0.3);
+  box-shadow: 0 4px 16px rgba(253, 164, 175, 0.25);
 }
-.btn-champagne:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 14px 35px rgba(253, 164, 175, 0.5);
-}
-.btn-velvet {
-  background: rgba(30, 19, 30, 0.7);
-  border-color: var(--border-romance);
+.btn-outline {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border);
   color: var(--text-soft);
 }
-.btn-velvet:hover {
-  background: rgba(45, 27, 45, 0.9);
-  border-color: var(--rose-soft);
-  color: #fff;
-  transform: translateY(-2px);
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-hover);
+  color: #ffffff;
 }
 .btn-lg {
-  padding: 0.95rem 2rem;
-  font-size: 1rem;
-  letter-spacing: 0.01em;
+  padding: 14px 24px;
+  font-size: 0.98rem;
+}
+.btn-block {
+  width: 100%;
 }
 
-/* ── HERO (INTIMATE & SEDUCTIVE) ────────────────────────────────────────── */
+/* ── HERO ── */
 .hero {
-  padding: 3rem 0 3.5rem;
   text-align: center;
-  position: relative;
+  padding: 16px 0 28px;
 }
-.hero-badge-pill {
+.hero-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 6px;
   background: rgba(244, 63, 94, 0.1);
-  border: 1px solid rgba(244, 63, 94, 0.3);
-  padding: 0.45rem 1.25rem;
-  border-radius: var(--radius-pill);
-  color: var(--rose-light);
-  font-size: 0.75rem;
+  border: 1px solid rgba(244, 63, 94, 0.25);
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  color: #fda4af;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 1.75rem;
-  box-shadow: 0 0 25px rgba(244, 63, 94, 0.2);
+  margin-bottom: 16px;
 }
-.hero-h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 5.5vw, 4.3rem);
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
   font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-  color: var(--text-pure);
-  max-width: 920px;
-  margin: 0 auto 1.5rem;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 14px;
 }
-.hero-h1 em {
+.hero-title em {
   font-style: italic;
   font-weight: 400;
-  background: var(--gradient-champagne);
+  background: linear-gradient(135deg, #fff1f2 0%, #fda4af 60%, #fb7185 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: inline-block;
-  padding-right: 0.1em;
 }
-.hero-desc {
-  font-size: clamp(1.05rem, 2vw, 1.22rem);
-  color: var(--text-secondary);
-  max-width: 680px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.75;
-  font-weight: 300;
+.hero-sub {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0 auto 24px;
+  line-height: 1.6;
 }
-.hero-actions {
+.hero-sub strong {
+  color: #ffffff;
+}
+.hero-cta-grid {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 3.5rem;
+  margin-bottom: 32px;
 }
 
-/* ── ROMANTIC STRIP (INTIMATE TRUST STATS) ───────────────────────────────── */
-.romance-strip {
+/* ── TRUST STATS (2x2 on Mobile, 4-col on Desktop) ── */
+.trust-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-  background: var(--bg-card);
+  gap: 12px;
+  background: var(--surface);
   backdrop-filter: blur(16px);
-  border: 1px solid var(--border-romance);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  padding: 1.6rem;
-  margin-bottom: 4.5rem;
-  box-shadow: var(--shadow-romance);
+  padding: 16px;
+  margin-bottom: 40px;
 }
-.strip-col {
+.trust-item {
   text-align: center;
-  border-right: 1px solid var(--border-subtle);
-  padding: 0.5rem;
+  padding: 6px;
 }
-.strip-col:last-child {
-  border-right: none;
+.trust-item:not(:last-child) {
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
-.strip-number {
-  font-family: var(--font-serif);
-  font-size: 2rem;
+.trust-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.65rem;
   font-weight: 700;
-  color: var(--text-pure);
-  letter-spacing: -0.02em;
-  margin-bottom: 0.2rem;
+  color: #ffffff;
+  margin-bottom: 2px;
 }
-.strip-number span {
-  color: var(--rose-soft);
-  font-size: 1.5rem;
+.trust-num span {
+  color: #fb7185;
 }
-.strip-label {
-  font-size: 0.78rem;
+.trust-label {
+  font-size: 0.75rem;
   color: var(--text-muted);
   font-weight: 600;
-  letter-spacing: 0.05em;
   text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-/* ── INVITATION / DATE CARDS (BEST & ESC TURKIYE) ────────────────────────── */
+/* ── PLATFORM CARDS ── */
+.section-title-wrap {
+  text-align: center;
+  margin-bottom: 22px;
+}
 .section-tagline {
-  font-family: var(--font-serif);
+  font-family: 'Playfair Display', serif;
   font-style: italic;
-  font-size: 1.05rem;
-  color: var(--rose-soft);
-  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+  color: #fb7185;
+  margin-bottom: 4px;
 }
-.section-header-title {
-  font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+.section-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text-pure);
-  margin-bottom: 2rem;
+  color: #ffffff;
 }
 
-.invitations-grid {
+.platform-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 4.5rem;
+  gap: 16px;
+  margin-bottom: 40px;
 }
-.invitation-card {
-  background: linear-gradient(180deg, rgba(28, 18, 28, 0.8) 0%, rgba(14, 9, 14, 0.95) 100%);
-  border: 1px solid var(--border-romance);
+.platform-card {
+  background: linear-gradient(180deg, rgba(26, 18, 26, 0.8) 0%, rgba(16, 11, 16, 0.95) 100%);
+  border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  padding: 2.75rem 2.25rem;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-romance);
 }
-.invitation-card::before {
+.platform-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -347,637 +311,402 @@ body {
   right: 0;
   height: 2px;
   background: var(--gradient-rose);
-  opacity: 0.7;
+  opacity: 0.6;
 }
-.invitation-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--border-romance-hover);
-  box-shadow: var(--shadow-card-hover);
+.platform-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-hover);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(244, 63, 94, 0.15);
 }
-.card-header-meta {
+.card-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 14px;
 }
-.card-pill-tag {
-  font-size: 0.72rem;
+.card-badge {
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 0.3rem 0.85rem;
-  border-radius: var(--radius-pill);
-  background: rgba(244, 63, 94, 0.12);
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  background: rgba(244, 63, 94, 0.14);
   border: 1px solid rgba(244, 63, 94, 0.3);
-  color: var(--rose-light);
+  color: #fda4af;
 }
-.card-site-url {
-  font-size: 0.82rem;
+.card-url {
+  font-size: 0.8rem;
   color: var(--text-muted);
-  font-family: var(--font-sans);
 }
-.invitation-title {
-  font-family: var(--font-serif);
-  font-size: 2rem;
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: var(--text-pure);
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin-bottom: 8px;
 }
-.invitation-desc {
-  font-size: 0.98rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 2rem;
-  font-weight: 300;
+.card-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 18px;
 }
-.invitation-list {
+.card-features {
   list-style: none;
-  margin-bottom: 2.5rem;
+  margin-bottom: 22px;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 8px;
 }
-.invitation-list li {
+.card-features li {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 0.92rem;
+  gap: 8px;
+  font-size: 0.86rem;
   color: var(--text-soft);
 }
-.invitation-list li span.sparkle {
-  color: var(--rose-soft);
-  font-size: 1rem;
+.card-features li span {
+  color: #fb7185;
+  font-size: 0.9rem;
 }
-.card-cta-wrap {
+.card-btn-wrap {
   margin-top: auto;
 }
-.btn-card-full {
-  width: 100%;
-  padding: 1.1rem;
-  font-size: 1rem;
-}
 
-/* ── ROMANTIC CITIES & DISTRICTS TABS ───────────────────────────────────── */
-.cities-wrapper {
-  margin-bottom: 4.5rem;
+/* ── CITIES & DISTRICTS TABS ── */
+.cities-section {
+  margin-bottom: 40px;
 }
-.city-romantic-tabs {
+.city-tabs-scroll {
   display: flex;
-  gap: 0.65rem;
-  border-bottom: 1px solid var(--border-romance);
-  padding-bottom: 0.85rem;
-  margin-bottom: 2rem;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
-.city-romantic-btn {
+.city-tabs-scroll::-webkit-scrollbar {
+  display: none;
+}
+.city-btn {
   background: transparent;
   border: 1px solid transparent;
-  color: var(--text-secondary);
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  padding: 0.55rem 1.4rem;
-  border-radius: var(--radius-pill);
+  color: var(--text-muted);
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
   cursor: pointer;
   transition: var(--transition);
   white-space: nowrap;
+  flex-shrink: 0;
 }
-.city-romantic-btn:hover {
-  color: var(--text-pure);
+.city-btn:hover {
+  color: #ffffff;
   background: rgba(244, 63, 94, 0.1);
 }
-.city-romantic-btn.active {
+.city-btn.active {
   background: var(--gradient-rose);
-  color: #fff;
+  color: #ffffff;
   font-weight: 600;
-  box-shadow: 0 6px 20px rgba(244, 63, 94, 0.35);
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);
 }
 
-.districts-romantic-grid {
+.districts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
 }
-.district-romantic-tile {
-  background: var(--bg-card);
-  border: 1px solid var(--border-romance);
-  border-radius: var(--radius-tile);
-  padding: 1.25rem 1.5rem;
+.district-tile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
   transition: var(--transition);
 }
-.district-romantic-tile:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--rose-soft);
-  transform: translateY(-3px) translateX(2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(244, 63, 94, 0.2);
+.district-tile:hover {
+  background: var(--surface-hover);
+  border-color: #fb7185;
+  transform: translateY(-2px);
 }
-.district-name-text {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  color: var(--text-pure);
-  font-weight: 600;
-  letter-spacing: -0.01em;
+.district-tile:active {
+  transform: scale(0.98);
 }
-.district-sub-text {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  color: var(--rose-soft);
-  margin-top: 0.15rem;
-}
-.district-arrow-icon {
-  color: var(--rose-soft);
+.district-title {
+  font-family: 'Playfair Display', serif;
   font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  display: block;
+}
+.district-sub {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  color: #fda4af;
+  margin-top: 2px;
+  display: block;
+}
+.district-arrow {
+  color: #fb7185;
+  font-size: 0.95rem;
   transition: transform 0.2s ease;
 }
-.district-romantic-tile:hover .district-arrow-icon {
-  transform: translateX(4px);
-  color: #fff;
+.district-tile:hover .district-arrow {
+  transform: translateX(3px);
+  color: #ffffff;
 }
 
-/* ── EDITORIAL ESSAY (ROMANTIC DATE CONCIERGE) ──────────────────────────── */
-.editorial-box {
-  background: var(--bg-card);
-  border: 1px solid var(--border-romance);
+/* ── EDITORIAL / REHBER ── */
+.guide-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  padding: 3.5rem;
-  margin-bottom: 4.5rem;
-  box-shadow: var(--shadow-romance);
+  padding: 28px;
+  margin-bottom: 40px;
 }
-.editorial-title {
-  font-family: var(--font-serif);
-  font-size: 1.85rem;
+.guide-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-pure);
-  margin-bottom: 1.25rem;
-  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin-bottom: 12px;
 }
-.editorial-subtitle {
-  font-family: var(--font-serif);
-  font-size: 1.35rem;
-  color: var(--rose-light);
-  margin: 2rem 0 0.85rem;
-  font-style: italic;
-}
-.editorial-paragraph {
-  color: var(--text-secondary);
-  font-size: 1.02rem;
-  line-height: 1.85;
-  margin-bottom: 1.5rem;
-  font-weight: 300;
-}
-.editorial-paragraph strong {
-  color: var(--text-pure);
-  font-weight: 600;
-}
-.editorial-quote-box {
-  border-left: 3px solid var(--rose-primary);
-  background: rgba(244, 63, 94, 0.06);
-  padding: 1.5rem 2rem;
-  border-radius: 0 var(--radius-tile) var(--radius-tile) 0;
-  margin: 2rem 0;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.15rem;
-  color: var(--rose-light);
+.guide-p {
+  color: var(--text-muted);
+  font-size: 0.94rem;
   line-height: 1.7;
+  margin-bottom: 12px;
+}
+.guide-p strong {
+  color: #ffffff;
+}
+.guide-quote {
+  border-left: 3px solid #f43f5e;
+  background: rgba(244, 63, 94, 0.08);
+  padding: 12px 16px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: 16px 0;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: #fecdd3;
+  line-height: 1.6;
 }
 
-/* ── ROMANTIC FAQ ACCORDION ─────────────────────────────────────────────── */
-.faq-wrap {
-  margin-bottom: 5rem;
+/* ── FAQ ACCORDION ── */
+.faq-section {
+  margin-bottom: 40px;
 }
-.faq-container {
+.faq-list {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--border-romance);
+  border-top: 1px solid var(--border);
 }
-.faq-row {
-  border-bottom: 1px solid var(--border-romance);
+.faq-item {
+  border-bottom: 1px solid var(--border);
 }
-.faq-header-btn {
+.faq-btn {
   width: 100%;
-  padding: 1.6rem 0;
+  padding: 16px 0;
   background: transparent;
   border: none;
-  color: var(--text-pure);
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
+  color: #ffffff;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
   font-weight: 600;
   text-align: left;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 12px;
   transition: color 0.2s ease;
 }
-.faq-header-btn:hover {
-  color: var(--rose-soft);
+.faq-btn:hover {
+  color: #fb7185;
 }
-.faq-icon-symbol {
-  font-size: 1.25rem;
-  color: var(--rose-soft);
-  transition: transform 0.3s ease;
+.faq-icon {
+  color: #fb7185;
+  font-size: 1.2rem;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
 }
-.faq-row.active .faq-icon-symbol {
+.faq-item.active .faq-icon {
   transform: rotate(45deg);
-  color: #fff;
+  color: #ffffff;
 }
-.faq-drawer {
+.faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.25s ease;
-  color: var(--text-secondary);
-  font-size: 0.98rem;
-  line-height: 1.8;
+  transition: max-height 0.3s ease, padding 0.2s ease;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
   padding: 0;
 }
-.faq-row.active .faq-drawer {
-  max-height: 350px;
-  padding-bottom: 1.6rem;
+.faq-item.active .faq-answer {
+  max-height: 250px;
+  padding-bottom: 16px;
 }
 
-/* ── SEDUCTIVE FOOTER ───────────────────────────────────────────────────── */
-.site-footer {
-  border-top: 1px solid var(--border-romance);
-  background: #040304;
-  padding: 4.5rem 0 3.5rem;
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border);
+  background: #050406;
+  padding: 32px 0 24px;
   text-align: center;
 }
-.footer-brand {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  color: var(--text-pure);
-  margin-bottom: 1rem;
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-bottom: 12px;
 }
-.footer-nav-row {
+.footer-links {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin-bottom: 16px;
 }
-.footer-nav-row a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.2s ease;
-}
-.footer-nav-row a:hover {
-  color: var(--rose-soft);
-}
-.footer-copyright {
+.footer-links a {
   color: var(--text-muted);
-  font-size: 0.82rem;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+.footer-links a:hover {
+  color: #fb7185;
+}
+.footer-copy {
+  color: #6d6168;
+  font-size: 0.78rem;
 }
 
-/* ── MOBILE SEDUCTIVE DOCK BAR ──────────────────────────────────────────── */
-.mobile-date-dock {
+/* ── FLOATING MOBILE DOCK (CLEAN & SLEEK) ── */
+.mobile-dock {
   display: none;
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  left: 12px;
+  right: 12px;
   z-index: 999;
-  background: rgba(14, 9, 14, 0.94);
+  background: rgba(16, 10, 16, 0.88);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-top: 1px solid var(--border-romance);
-  padding: 0.75rem 1.25rem;
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(244, 63, 94, 0.2);
+  border: 1px solid rgba(251, 113, 133, 0.25);
+  border-radius: var(--radius-full);
+  padding: 6px 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 20px rgba(244, 63, 94, 0.2);
 }
-.dock-inner-grid {
+.dock-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.85rem;
-  max-width: 480px;
-  margin: 0 auto;
+  gap: 8px;
 }
-.dock-link-btn {
-  padding: 0.85rem 0.6rem;
-  border-radius: var(--radius-pill);
-  font-size: 0.85rem;
+.dock-btn {
+  padding: 10px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
   font-weight: 700;
   text-align: center;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 4px;
 }
 
-/* ── RESPONSIVE RULES ───────────────────────────────────────────────────── */
 /* ==========================================================================
-   ULTRA-PREMIUM MOBILE UI ENHANCEMENTS (iOS / Android Native Feel)
+   MOBILE RESPONSIVE BREAKPOINTS (SUPER CLEAN & EASY)
    ========================================================================== */
-
-/* Universal Touch Feel */
-button, a, .district-romantic-tile, .city-romantic-btn {
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-}
-
-@media (max-width: 860px) {
-  .invitations-grid {
+@media (max-width: 768px) {
+  .platform-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 14px;
   }
-  .romance-strip {
+  .trust-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    padding: 1.25rem;
+    gap: 8px;
+    padding: 12px;
   }
-  .strip-col {
+  .trust-item:nth-child(2) {
     border-right: none;
-    border-bottom: 1px solid var(--border-subtle);
-    padding: 0.75rem 0.25rem;
   }
-  .strip-col:nth-child(3),
-  .strip-col:nth-child(4) {
-    border-bottom: none;
+  .trust-item:nth-child(1),
+  .trust-item:nth-child(2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 10px;
+  }
+  .trust-item:nth-child(3),
+  .trust-item:nth-child(4) {
+    padding-top: 10px;
   }
 }
 
-@media (max-width: 640px) {
-  body {
-    padding-bottom: calc(90px + env(safe-area-inset-bottom, 20px));
+@media (max-width: 600px) {
+  .mobile-dock {
+    display: block;
   }
-
-  .container {
-    padding: 0 1.15rem;
-  }
-
-  /* ── 1. FLOATING NAVBAR (MOBILE) ── */
-  .nav-holder {
-    top: 0.75rem;
-    padding: 0 0.75rem;
-    margin-bottom: 1.5rem;
-  }
-  .nav-romantic {
-    padding: 0.5rem 0.75rem 0.5rem 1rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7), 0 0 15px rgba(244, 63, 94, 0.12);
-  }
-  .nav-brand {
-    font-size: 1.05rem;
-    gap: 0.45rem;
-  }
-  .nav-brand-tag {
-    font-size: 0.6rem;
-    padding: 0.15rem 0.45rem;
-  }
-  .nav-ctas {
-    display: flex;
-    gap: 0.4rem;
-  }
-  .nav-ctas .btn {
-    padding: 0.45rem 0.85rem;
-    font-size: 0.75rem;
-    border-radius: var(--radius-pill);
-  }
-  .nav-ctas .btn-velvet {
-    display: none; /* Keep single primary CTA in header on mobile */
-  }
-
-  /* ── 2. HERO SECTION (MOBILE) ── */
-  .hero {
-    padding: 1.5rem 0 2rem;
-  }
-  .hero-badge-pill {
-    font-size: 0.68rem;
-    padding: 0.4rem 0.95rem;
-    margin-bottom: 1.25rem;
-    letter-spacing: 0.08em;
-  }
-  .hero-h1 {
-    font-size: 2.15rem;
-    line-height: 1.18;
-    margin-bottom: 1.15rem;
-  }
-  .hero-desc {
-    font-size: 0.95rem;
-    line-height: 1.65;
-    margin-bottom: 1.75rem;
-  }
-  .hero-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 2.25rem;
-  }
-  .hero-actions .btn {
-    width: 100%;
-    padding: 0.95rem 1.25rem;
-    font-size: 0.94rem;
-    border-radius: var(--radius-pill);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  }
-  .hero-actions .btn:active {
-    transform: scale(0.98);
-  }
-
-  /* ── 3. TRUST STRIP (BENTO 2x2 ON MOBILE) ── */
-  .romance-strip {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    padding: 1.1rem;
-    border-radius: 20px;
-    margin-bottom: 3rem;
-  }
-  .strip-col {
-    padding: 0.5rem 0.25rem;
-  }
-  .strip-number {
-    font-size: 1.65rem;
-  }
-  .strip-number span {
-    font-size: 1.25rem;
-  }
-  .strip-label {
-    font-size: 0.72rem;
-  }
-
-  /* ── 4. INVITATION CARDS (MOBILE APP-CARD FEEL) ── */
-  .section-tagline {
-    font-size: 0.9rem;
-  }
-  .section-header-title {
-    font-size: 1.65rem;
-    margin-bottom: 1.5rem;
-  }
-  .invitations-grid {
-    gap: 1.25rem;
-    margin-bottom: 3.5rem;
-  }
-  .invitation-card {
-    padding: 1.75rem 1.35rem;
-    border-radius: 20px;
-  }
-  .card-header-meta {
-    margin-bottom: 1.15rem;
-  }
-  .invitation-title {
-    font-size: 1.65rem;
-    margin-bottom: 0.6rem;
-  }
-  .invitation-desc {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
-  .invitation-list {
-    gap: 0.7rem;
-    margin-bottom: 1.75rem;
-  }
-  .invitation-list li {
-    font-size: 0.85rem;
-    gap: 0.6rem;
-  }
-  .btn-card-full {
-    padding: 0.95rem;
-    font-size: 0.92rem;
-  }
-  .btn-card-full:active {
-    transform: scale(0.98);
-  }
-
-  /* ── 5. CITIES & DISTRICTS TABS (HORIZONTAL SNAP SCROLL) ── */
-  .cities-wrapper {
-    margin-bottom: 3.5rem;
-  }
-  .city-romantic-tabs {
-    gap: 0.5rem;
-    padding-bottom: 0.65rem;
-    margin-bottom: 1.25rem;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .city-romantic-tabs::-webkit-scrollbar {
+  .nav-actions {
     display: none;
   }
-  .city-romantic-btn {
-    font-size: 0.9rem;
-    padding: 0.5rem 1.1rem;
-    flex-shrink: 0;
+  .navbar {
+    padding: 6px 12px;
   }
-
-  /* ── 6. DISTRICT TILES (ELEGANT 2-COL / 1-COL COMPACT TILES) ── */
-  .districts-romantic-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
+  .brand {
+    font-size: 1.05rem;
   }
-  .district-romantic-tile {
-    padding: 1rem 1.15rem;
-    border-radius: 14px;
+  .hero {
+    padding: 12px 0 20px;
   }
-  .district-romantic-tile:active {
-    transform: scale(0.98);
-    background: var(--bg-card-hover);
-    border-color: var(--rose-soft);
+  .hero-title {
+    font-size: 1.85rem;
+    margin-bottom: 10px;
   }
-  .district-name-text {
-    font-size: 0.98rem;
+  .hero-sub {
+    font-size: 0.92rem;
+    margin-bottom: 18px;
   }
-  .district-sub-text {
-    font-size: 0.72rem;
+  .hero-cta-grid {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
   }
-
-  /* ── 7. EDITORIAL ESSAY ── */
-  .editorial-box {
-    padding: 1.5rem 1.25rem;
-    border-radius: 20px;
-    margin-bottom: 3.5rem;
+  .hero-cta-grid .btn {
+    width: 100%;
+    padding: 12px;
   }
-  .editorial-title {
+  .trust-num {
     font-size: 1.45rem;
   }
-  .editorial-subtitle {
-    font-size: 1.15rem;
-    margin: 1.5rem 0 0.6rem;
+  .trust-label {
+    font-size: 0.68rem;
   }
-  .editorial-paragraph {
-    font-size: 0.92rem;
-    line-height: 1.75;
-    margin-bottom: 1.15rem;
+  .platform-card {
+    padding: 18px;
   }
-  .editorial-quote-box {
-    padding: 1.15rem 1.25rem;
-    font-size: 0.98rem;
-    margin: 1.5rem 0;
+  .card-title {
+    font-size: 1.4rem;
   }
-
-  /* ── 8. FAQ ACCORDION ── */
-  .faq-wrap {
-    margin-bottom: 3.5rem;
+  .districts-grid {
+    grid-template-columns: 1fr;
   }
-  .faq-header-btn {
-    padding: 1.25rem 0;
-    font-size: 1.02rem;
-    gap: 1rem;
+  .guide-box {
+    padding: 18px;
   }
-  .faq-drawer {
-    font-size: 0.88rem;
-    line-height: 1.7;
-  }
-  .faq-row.active .faq-drawer {
-    padding-bottom: 1.25rem;
-  }
-
-  /* ── 9. FLOATING DOCK (ULTRA LUXURY GLASS PILL) ── */
-  .mobile-date-dock {
-    display: block;
-    position: fixed;
-    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
-    left: 12px;
-    right: 12px;
-    z-index: 999;
-    background: rgba(18, 11, 18, 0.85);
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
-    border: 1px solid rgba(251, 113, 133, 0.28);
-    border-radius: var(--radius-pill);
-    padding: 0.5rem 0.65rem;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(244, 63, 94, 0.25);
-  }
-  .dock-inner-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.65rem;
-  }
-  .dock-link-btn {
-    padding: 0.75rem 0.5rem;
-    border-radius: var(--radius-pill);
-    font-size: 0.84rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  }
-  .dock-link-btn:active {
-    transform: scale(0.96);
-  }
-
-  /* ── 10. SITE FOOTER ── */
-  .site-footer {
-    padding: 3rem 0 2rem;
-  }
-  .footer-brand {
+  .guide-title {
     font-size: 1.25rem;
   }
-  .footer-nav-row {
-    gap: 1rem 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-  .footer-nav-row a {
-    font-size: 0.82rem;
-  }
-  .footer-copyright {
-    font-size: 0.75rem;
-    line-height: 1.6;
-    padding: 0 0.5rem;
+  .faq-btn {
+    font-size: 0.98rem;
+    padding: 14px 0;
   }
 }
