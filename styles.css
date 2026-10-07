@@ -1,47 +1,54 @@
 /* ==========================================================================
-   VIP PORTAL — APPLE & PAMBA.APP INSPIRED MINIMAL LUXURY DARK SYSTEM
-   Pure Monochromatic Architecture, No AI Colors, Crisp Typography
+   VIP PORTAL — ROMANTIC LUXURY DATE & SEDUCTION AESTHETIC (RAYA / HIGH-END DATE)
+   Playfair Display + Rose Champagne Velvet Glow + Monochromatic Warmth
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cinzel:wght@500;700&display=swap');
 
 :root {
-  /* Apple / Pamba Dark Palette */
-  --bg-page: #000000;
-  --bg-surface: #0a0a0c;
-  --bg-surface-elevated: #111114;
-  --bg-surface-hover: #17171c;
-  --bg-surface-card: #0d0d10;
+  /* Sensual Velvet Romance Palette */
+  --bg-deep: #070507;
+  --bg-card: rgba(20, 14, 20, 0.75);
+  --bg-card-hover: rgba(30, 20, 30, 0.9);
+  --bg-card-elevated: #160f17;
 
-  /* Monochromatic Borders (Ultra Clean) */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-medium: rgba(255, 255, 255, 0.14);
-  --border-hover: rgba(255, 255, 255, 0.3);
+  /* Rose Champagne Accents */
+  --rose-glow: rgba(244, 63, 94, 0.25);
+  --rose-primary: #f43f5e;
+  --rose-soft: #fb7185;
+  --rose-light: #fecdd3;
+  --champagne: #fef08a;
+  --champagne-gold: #fbbf24;
 
-  /* Typography Hierarchy */
+  --gradient-rose: linear-gradient(135deg, #fb7185 0%, #f43f5e 50%, #be123c 100%);
+  --gradient-champagne: linear-gradient(135deg, #fff1f2 0%, #fda4af 60%, #fb7185 100%);
+  --gradient-card-border: linear-gradient(135deg, rgba(251, 113, 133, 0.3) 0%, rgba(255, 255, 255, 0.05) 100%);
+
+  /* Border Tokens */
+  --border-romance: rgba(251, 113, 133, 0.14);
+  --border-romance-hover: rgba(251, 113, 133, 0.4);
+  --border-subtle: rgba(255, 255, 255, 0.07);
+
+  /* Text Colors */
   --text-pure: #ffffff;
-  --text-muted: #86868b; /* Iconic Apple Gray */
-  --text-secondary: #a1a1a6;
-  --text-tertiary: #515154;
+  --text-soft: #fce7f3;
+  --text-secondary: #c4b5bd;
+  --text-muted: #837580;
 
-  /* Single Refined Accent (White Fill & Pure Contrast) */
-  --btn-white-bg: #ffffff;
-  --btn-white-text: #000000;
-
-  /* Typography Font */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  /* Fonts */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-accent: 'Cinzel', serif;
 
   /* Radii */
   --radius-pill: 9999px;
-  --radius-card: 22px;
+  --radius-card: 24px;
   --radius-tile: 16px;
-  --radius-inner: 12px;
 
-  /* Transitions & Shadows */
-  --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.9), 0 0 0 1px var(--border-subtle);
-  --shadow-hover: 0 30px 60px -20px rgba(0, 0, 0, 0.95), 0 0 0 1px var(--border-medium);
+  /* Shadows */
+  --shadow-romance: 0 20px 45px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(244, 63, 94, 0.15);
+  --shadow-card-hover: 0 25px 50px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(244, 63, 94, 0.3);
+  --transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *, *::before, *::after {
@@ -52,93 +59,109 @@
 
 html {
   font-size: 16px;
-  background-color: var(--bg-page);
+  background-color: var(--bg-deep);
   color: var(--text-pure);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-page);
-  line-height: 1.55;
+  background-color: var(--bg-deep);
+  background-image: 
+    radial-gradient(ellipse 90% 55% at 50% -10%, rgba(225, 29, 72, 0.18) 0%, transparent 60%),
+    radial-gradient(circle at 10% 40%, rgba(244, 63, 94, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 90% 70%, rgba(217, 70, 239, 0.07) 0%, transparent 45%);
+  background-attachment: fixed;
+  line-height: 1.6;
   min-height: 100vh;
-  padding-bottom: 90px;
+  padding-bottom: 95px;
   overflow-x: hidden;
 }
 
 /* ── CONTAINER ──────────────────────────────────────────────────────────── */
 .container {
   width: 100%;
-  max-width: 1140px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-/* ── FLOATING PILL NAVBAR (APPLE / PAMBA STYLE) ─────────────────────────── */
-.nav-wrapper {
+/* ── SEDUCTIVE FLOATING NAVBAR ───────────────────────────────────────────── */
+.nav-holder {
   position: sticky;
-  top: 1rem;
+  top: 1.25rem;
   z-index: 100;
   display: flex;
   justify-content: center;
   padding: 0 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
-.nav-pill {
+.nav-romantic {
   width: 100%;
-  max-width: 980px;
-  background: rgba(13, 13, 16, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border-subtle);
+  max-width: 960px;
+  background: rgba(18, 12, 19, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-romance);
   border-radius: var(--radius-pill);
-  padding: 0.55rem 0.85rem 0.55rem 1.25rem;
+  padding: 0.6rem 0.85rem 0.6rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(244, 63, 94, 0.1);
   transition: var(--transition);
 }
-.nav-pill:hover {
-  border-color: var(--border-medium);
+.nav-romantic:hover {
+  border-color: var(--border-romance-hover);
 }
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
   text-decoration: none;
-  color: var(--text-pure);
+  font-family: var(--font-serif);
   font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: -0.02em;
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  color: var(--text-pure);
 }
-.nav-brand-badge {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
+.nav-brand span.heart {
+  color: var(--rose-primary);
+  font-size: 0.95rem;
+  animation: heartPulse 2.2s infinite ease-in-out;
+}
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.25); opacity: 1; filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.8)); }
+}
+.nav-brand-tag {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  border: 1px solid var(--border-subtle);
-  padding: 0.15rem 0.5rem;
+  letter-spacing: 0.1em;
+  color: var(--rose-soft);
+  background: rgba(244, 63, 94, 0.12);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+  padding: 0.2rem 0.55rem;
   border-radius: var(--radius-pill);
 }
-.nav-links {
+.nav-ctas {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
-/* ── BUTTONS & PILL CTAS ────────────────────────────────────────────────── */
+/* ── BUTTONS (ROMANTIC ROSE & VELVET SILK) ───────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
-  padding: 0.58rem 1.15rem;
+  gap: 0.5rem;
+  padding: 0.65rem 1.35rem;
   border-radius: var(--radius-pill);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
@@ -146,360 +169,404 @@ body {
   border: 1px solid transparent;
   white-space: nowrap;
 }
-.btn-white {
-  background-color: var(--btn-white-bg);
-  color: var(--btn-white-text);
+.btn-rose {
+  background: var(--gradient-rose);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(244, 63, 94, 0.4);
 }
-.btn-white:hover {
-  background-color: #e5e5ea;
-  transform: translateY(-1px);
+.btn-rose:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 35px rgba(244, 63, 94, 0.6);
 }
-.btn-dark {
-  background-color: var(--bg-surface-elevated);
-  border-color: var(--border-subtle);
-  color: var(--text-pure);
+.btn-champagne {
+  background: var(--gradient-champagne);
+  color: #170912;
+  font-weight: 700;
+  box-shadow: 0 8px 25px rgba(253, 164, 175, 0.3);
 }
-.btn-dark:hover {
-  background-color: var(--bg-surface-hover);
-  border-color: var(--border-hover);
-  transform: translateY(-1px);
+.btn-champagne:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 35px rgba(253, 164, 175, 0.5);
+}
+.btn-velvet {
+  background: rgba(30, 19, 30, 0.7);
+  border-color: var(--border-romance);
+  color: var(--text-soft);
+}
+.btn-velvet:hover {
+  background: rgba(45, 27, 45, 0.9);
+  border-color: var(--rose-soft);
+  color: #fff;
+  transform: translateY(-2px);
 }
 .btn-lg {
-  padding: 0.85rem 1.75rem;
-  font-size: 0.95rem;
+  padding: 0.95rem 2rem;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
 }
 
-/* ── HERO (PAMBA / APPLE EDITORIAL HERO) ────────────────────────────────── */
+/* ── HERO (INTIMATE & SEDUCTIVE) ────────────────────────────────────────── */
 .hero {
   padding: 3rem 0 3.5rem;
   text-align: center;
+  position: relative;
 }
-.hero-chip {
+.hero-badge-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-surface);
-  padding: 0.4rem 1rem;
+  gap: 0.6rem;
+  background: rgba(244, 63, 94, 0.1);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  padding: 0.45rem 1.25rem;
   border-radius: var(--radius-pill);
+  color: var(--rose-light);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   margin-bottom: 1.75rem;
-}
-.hero-chip-dot {
-  width: 6px;
-  height: 6px;
-  background-color: #ffffff;
-  border-radius: 50%;
-  animation: pulseLight 2s infinite ease-in-out;
-}
-@keyframes pulseLight {
-  0%, 100% { opacity: 0.4; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.1); }
+  box-shadow: 0 0 25px rgba(244, 63, 94, 0.2);
 }
 .hero-h1 {
-  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.04em;
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5.5vw, 4.3rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
   color: var(--text-pure);
-  max-width: 900px;
+  max-width: 920px;
   margin: 0 auto 1.5rem;
 }
-.hero-h1 span.dim {
-  color: var(--text-muted);
-}
-.hero-sub {
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  color: var(--text-secondary);
-  max-width: 640px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.6;
+.hero-h1 em {
+  font-style: italic;
   font-weight: 400;
+  background: var(--gradient-champagne);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  padding-right: 0.1em;
 }
-.hero-buttons {
+.hero-desc {
+  font-size: clamp(1.05rem, 2vw, 1.22rem);
+  color: var(--text-secondary);
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.75;
+  font-weight: 300;
+}
+.hero-actions {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.25rem;
   flex-wrap: wrap;
   margin-bottom: 3.5rem;
 }
 
-/* ── STATS BAR (MONOCHROME APPLE ACCENTS) ───────────────────────────────── */
-.stats-bar {
+/* ── ROMANTIC STRIP (INTIMATE TRUST STATS) ───────────────────────────────── */
+.romance-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+  gap: 1.25rem;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-romance);
   border-radius: var(--radius-card);
-  padding: 1.5rem;
-  margin-bottom: 4rem;
+  padding: 1.6rem;
+  margin-bottom: 4.5rem;
+  box-shadow: var(--shadow-romance);
 }
-.stat-cell {
+.strip-col {
   text-align: center;
   border-right: 1px solid var(--border-subtle);
   padding: 0.5rem;
 }
-.stat-cell:last-child {
+.strip-col:last-child {
   border-right: none;
 }
-.stat-value {
-  font-size: 1.85rem;
+.strip-number {
+  font-family: var(--font-serif);
+  font-size: 2rem;
   font-weight: 700;
   color: var(--text-pure);
-  letter-spacing: -0.03em;
-  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.2rem;
 }
-.stat-label {
+.strip-number span {
+  color: var(--rose-soft);
+  font-size: 1.5rem;
+}
+.strip-label {
   font-size: 0.78rem;
   color: var(--text-muted);
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
-/* ── BENTO PLATFORM CARDS (APPLE CLEAN CARDS) ───────────────────────────── */
-.section-intro {
+/* ── INVITATION / DATE CARDS (BEST & ESC TURKIYE) ────────────────────────── */
+.section-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--rose-soft);
+  margin-bottom: 0.35rem;
+}
+.section-header-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-pure);
   margin-bottom: 2rem;
 }
-.section-tag {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 0.4rem;
-}
-.section-heading {
-  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--text-pure);
-}
 
-.cards-bento {
+.invitations-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.75rem;
+  gap: 2rem;
   margin-bottom: 4.5rem;
 }
-.bento-card {
-  background: var(--bg-surface-card);
-  border: 1px solid var(--border-subtle);
+.invitation-card {
+  background: linear-gradient(180deg, rgba(28, 18, 28, 0.8) 0%, rgba(14, 9, 14, 0.95) 100%);
+  border: 1px solid var(--border-romance);
   border-radius: var(--radius-card);
-  padding: 2.5rem;
+  padding: 2.75rem 2.25rem;
   display: flex;
   flex-direction: column;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-romance);
 }
-.bento-card:hover {
-  border-color: var(--border-hover);
-  background: var(--bg-surface-elevated);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-hover);
+.invitation-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-rose);
+  opacity: 0.7;
 }
-.bento-card-header {
+.invitation-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-romance-hover);
+  box-shadow: var(--shadow-card-hover);
+}
+.card-header-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.5rem;
 }
-.bento-index {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  border: 1px solid var(--border-subtle);
-  padding: 0.2rem 0.6rem;
+.card-pill-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
   border-radius: var(--radius-pill);
+  background: rgba(244, 63, 94, 0.12);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  color: var(--rose-light);
 }
-.bento-url {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-secondary);
+.card-site-url {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
 }
-.bento-title {
-  font-size: 1.85rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+.invitation-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
   color: var(--text-pure);
   margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
 }
-.bento-desc {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  line-height: 1.65;
+.invitation-desc {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
   margin-bottom: 2rem;
+  font-weight: 300;
 }
-.bento-features {
+.invitation-list {
   list-style: none;
   margin-bottom: 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
-.bento-features li {
+.invitation-list li {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+  gap: 0.75rem;
+  font-size: 0.92rem;
+  color: var(--text-soft);
 }
-.bento-features li span.dot {
-  width: 5px;
-  height: 5px;
-  background-color: var(--text-pure);
-  border-radius: 50%;
-  flex-shrink: 0;
+.invitation-list li span.sparkle {
+  color: var(--rose-soft);
+  font-size: 1rem;
 }
-.bento-cta-wrap {
+.card-cta-wrap {
   margin-top: auto;
 }
-.btn-full {
+.btn-card-full {
   width: 100%;
-  padding: 0.95rem;
-  font-size: 0.92rem;
+  padding: 1.1rem;
+  font-size: 1rem;
 }
 
-/* ── CITIES & DISTRICTS CLEAN TILES ─────────────────────────────────────── */
-.cities-section {
+/* ── ROMANTIC CITIES & DISTRICTS TABS ───────────────────────────────────── */
+.cities-wrapper {
   margin-bottom: 4.5rem;
 }
-.city-pill-tabs {
+.city-romantic-tabs {
   display: flex;
-  gap: 0.5rem;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 0.75rem;
-  margin-bottom: 1.75rem;
+  gap: 0.65rem;
+  border-bottom: 1px solid var(--border-romance);
+  padding-bottom: 0.85rem;
+  margin-bottom: 2rem;
   overflow-x: auto;
 }
-.city-pill-btn {
+.city-romantic-btn {
   background: transparent;
   border: 1px solid transparent;
-  color: var(--text-muted);
-  font-family: var(--font-sans);
-  font-size: 0.88rem;
-  font-weight: 500;
-  padding: 0.5rem 1.15rem;
+  color: var(--text-secondary);
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  padding: 0.55rem 1.4rem;
   border-radius: var(--radius-pill);
   cursor: pointer;
   transition: var(--transition);
   white-space: nowrap;
 }
-.city-pill-btn:hover {
+.city-romantic-btn:hover {
   color: var(--text-pure);
-  background: var(--bg-surface);
+  background: rgba(244, 63, 94, 0.1);
 }
-.city-pill-btn.active {
-  background: var(--btn-white-bg);
-  color: var(--btn-white-text);
+.city-romantic-btn.active {
+  background: var(--gradient-rose);
+  color: #fff;
   font-weight: 600;
+  box-shadow: 0 6px 20px rgba(244, 63, 94, 0.35);
 }
 
-.districts-grid {
+.districts-romantic-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
 }
-.district-tile {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+.district-romantic-tile {
+  background: var(--bg-card);
+  border: 1px solid var(--border-romance);
   border-radius: var(--radius-tile);
-  padding: 1.15rem 1.35rem;
+  padding: 1.25rem 1.5rem;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
   transition: var(--transition);
 }
-.district-tile:hover {
-  background: var(--bg-surface-elevated);
-  border-color: var(--border-hover);
-  transform: translateY(-2px);
+.district-romantic-tile:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--rose-soft);
+  transform: translateY(-3px) translateX(2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(244, 63, 94, 0.2);
 }
-.district-tile-name {
+.district-name-text {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
   color: var(--text-pure);
-  font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
-.district-tile-arrow {
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  transition: var(--transition);
+.district-sub-text {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--rose-soft);
+  margin-top: 0.15rem;
 }
-.district-tile:hover .district-tile-arrow {
-  color: var(--text-pure);
-  transform: translateX(3px) translateY(-1px);
+.district-arrow-icon {
+  color: var(--rose-soft);
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+.district-romantic-tile:hover .district-arrow-icon {
+  transform: translateX(4px);
+  color: #fff;
 }
 
-/* ── EDITORIAL SEO ARTICLE ──────────────────────────────────────────────── */
-.editorial-article {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+/* ── EDITORIAL ESSAY (ROMANTIC DATE CONCIERGE) ──────────────────────────── */
+.editorial-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-romance);
   border-radius: var(--radius-card);
-  padding: 3rem;
+  padding: 3.5rem;
   margin-bottom: 4.5rem;
+  box-shadow: var(--shadow-romance);
 }
-.editorial-h2 {
-  font-size: 1.5rem;
+.editorial-title {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
   font-weight: 700;
   color: var(--text-pure);
-  letter-spacing: -0.02em;
-  margin-bottom: 1rem;
-}
-.editorial-h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  margin: 1.75rem 0 0.6rem;
-}
-.editorial-p {
-  color: var(--text-muted);
-  font-size: 0.98rem;
-  line-height: 1.75;
   margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
 }
-.editorial-p strong {
+.editorial-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--rose-light);
+  margin: 2rem 0 0.85rem;
+  font-style: italic;
+}
+.editorial-paragraph {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+.editorial-paragraph strong {
   color: var(--text-pure);
   font-weight: 600;
 }
-.editorial-callout {
-  border-left: 2px solid var(--text-pure);
-  background: var(--bg-surface-elevated);
-  padding: 1.15rem 1.5rem;
-  border-radius: 0 var(--radius-inner) var(--radius-inner) 0;
-  margin: 1.75rem 0;
-  color: var(--text-secondary);
-  font-size: 0.92rem;
+.editorial-quote-box {
+  border-left: 3px solid var(--rose-primary);
+  background: rgba(244, 63, 94, 0.06);
+  padding: 1.5rem 2rem;
+  border-radius: 0 var(--radius-tile) var(--radius-tile) 0;
+  margin: 2rem 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--rose-light);
+  line-height: 1.7;
 }
 
-/* ── FAQ ACCORDION (APPLE MINIMAL BORDERS) ───────────────────────────────── */
-.faq-section {
+/* ── ROMANTIC FAQ ACCORDION ─────────────────────────────────────────────── */
+.faq-wrap {
   margin-bottom: 5rem;
 }
-.faq-list {
+.faq-container {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--border-romance);
 }
-.faq-item {
-  border-bottom: 1px solid var(--border-subtle);
+.faq-row {
+  border-bottom: 1px solid var(--border-romance);
 }
-.faq-toggle {
+.faq-header-btn {
   width: 100%;
-  padding: 1.4rem 0;
+  padding: 1.6rem 0;
   background: transparent;
   border: none;
   color: var(--text-pure);
-  font-family: var(--font-sans);
-  font-size: 1.05rem;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
   font-weight: 600;
   text-align: left;
   cursor: pointer;
@@ -507,124 +574,138 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  transition: color 0.2s ease;
 }
-.faq-toggle-icon {
+.faq-header-btn:hover {
+  color: var(--rose-soft);
+}
+.faq-icon-symbol {
   font-size: 1.25rem;
-  color: var(--text-muted);
-  transition: transform 0.25s ease;
+  color: var(--rose-soft);
+  transition: transform 0.3s ease;
 }
-.faq-item.active .faq-toggle-icon {
+.faq-row.active .faq-icon-symbol {
   transform: rotate(45deg);
-  color: var(--text-pure);
+  color: #fff;
 }
-.faq-content {
+.faq-drawer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.2s ease;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.7;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.25s ease;
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.8;
   padding: 0;
 }
-.faq-item.active .faq-content {
-  max-height: 300px;
-  padding-bottom: 1.4rem;
+.faq-row.active .faq-drawer {
+  max-height: 350px;
+  padding-bottom: 1.6rem;
 }
 
-/* ── FOOTER ─────────────────────────────────────────────────────────────── */
+/* ── SEDUCTIVE FOOTER ───────────────────────────────────────────────────── */
 .site-footer {
-  border-top: 1px solid var(--border-subtle);
-  padding: 4rem 0 3rem;
+  border-top: 1px solid var(--border-romance);
+  background: #040304;
+  padding: 4.5rem 0 3.5rem;
   text-align: center;
-  color: var(--text-tertiary);
-  font-size: 0.82rem;
 }
-.footer-nav {
+.footer-brand {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-pure);
+  margin-bottom: 1rem;
+}
+.footer-nav-row {
   display: flex;
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
-.footer-nav a {
+.footer-nav-row a {
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.88rem;
-  transition: var(--transition);
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
 }
-.footer-nav a:hover {
-  color: var(--text-pure);
+.footer-nav-row a:hover {
+  color: var(--rose-soft);
+}
+.footer-copyright {
+  color: var(--text-muted);
+  font-size: 0.82rem;
 }
 
-/* ── MOBILE BOTTOM STICKY BAR ───────────────────────────────────────────── */
-.mobile-bar {
+/* ── MOBILE SEDUCTIVE DOCK BAR ──────────────────────────────────────────── */
+.mobile-date-dock {
   display: none;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 999;
-  background: rgba(10, 10, 12, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid var(--border-subtle);
+  background: rgba(14, 9, 14, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-top: 1px solid var(--border-romance);
   padding: 0.75rem 1.25rem;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(244, 63, 94, 0.2);
 }
-.mobile-bar-inner {
+.dock-inner-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
+  gap: 0.85rem;
   max-width: 480px;
   margin: 0 auto;
 }
-.mobile-bar-btn {
-  padding: 0.75rem 0.5rem;
+.dock-link-btn {
+  padding: 0.85rem 0.6rem;
   border-radius: var(--radius-pill);
-  font-size: 0.82rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
   text-align: center;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
 }
 
 /* ── RESPONSIVE RULES ───────────────────────────────────────────────────── */
 @media (max-width: 860px) {
-  .cards-bento {
+  .invitations-grid {
     grid-template-columns: 1fr;
   }
-  .stats-bar {
+  .romance-strip {
     grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
-  .stat-cell:nth-child(2) {
+  .strip-col:nth-child(2) {
     border-right: none;
   }
 }
 
 @media (max-width: 640px) {
-  .mobile-bar {
+  .mobile-date-dock {
     display: block;
   }
-  .nav-links {
+  .nav-ctas {
     display: none;
   }
   .hero {
-    padding: 2.5rem 0 2rem;
+    padding: 2.25rem 0 1.75rem;
   }
-  .hero-buttons {
+  .hero-actions {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.85rem;
   }
-  .hero-buttons .btn {
+  .hero-actions .btn {
     width: 100%;
   }
-  .editorial-article {
-    padding: 1.75rem;
+  .editorial-box {
+    padding: 1.85rem;
   }
-  .districts-grid {
+  .districts-romantic-grid {
     grid-template-columns: 1fr;
   }
 }

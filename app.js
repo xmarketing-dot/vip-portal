@@ -1,33 +1,33 @@
 /**
- * VIP PORTAL — APPLE & PAMBA STYLE MINIMAL INTERACTIONS
+ * VIP PORTAL — ROMANTIC DATE INTERACTIONS
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Clean FAQ Accordion
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const toggleBtn = item.querySelector('.faq-toggle');
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', () => {
-        const isOpen = item.classList.contains('active');
-        faqItems.forEach(i => i.classList.remove('active'));
-        if (!isOpen) {
-          item.classList.add('active');
+  // 1. FAQ Accordion (.faq-row.active)
+  const faqRows = document.querySelectorAll('.faq-row');
+  faqRows.forEach(row => {
+    const btn = row.querySelector('.faq-header-btn');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        const isActive = row.classList.contains('active');
+        faqRows.forEach(r => r.classList.remove('active'));
+        if (!isActive) {
+          row.classList.add('active');
         }
       });
     }
   });
 
   // 2. City Tabs Switching
-  const tabBtns = document.querySelectorAll('.city-pill-btn');
+  const cityBtns = document.querySelectorAll('.city-romantic-btn');
   const cityPanels = document.querySelectorAll('.city-panel');
 
-  tabBtns.forEach(btn => {
+  cityBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const targetCity = btn.getAttribute('data-city');
 
-      tabBtns.forEach(b => b.classList.remove('active'));
+      cityBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       cityPanels.forEach(panel => {
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 3. DNS Prefetch for Destination Platforms
+  // 3. Outgoing Speed Preconnect
   ['https://www.besteskort.online', 'https://escturkiye.devs.surf'].forEach(url => {
     const link = document.createElement('link');
     link.rel = 'dns-prefetch';
