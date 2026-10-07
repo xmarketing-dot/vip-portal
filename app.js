@@ -16,36 +16,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4500);
   }
 
-  // 2. FAQ Accordion Toggle
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const questionBtn = item.querySelector('.faq-question');
-    if (questionBtn) {
-      questionBtn.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        // Close all other items
-        faqItems.forEach(i => i.classList.remove('active'));
-        // Toggle current
-        if (!isActive) {
-          item.classList.add('active');
+  // 2. FAQ Accordion Toggle (.faq-card.open)
+  const faqCards = document.querySelectorAll('.faq-card');
+  faqCards.forEach(card => {
+    const trigger = card.querySelector('.faq-trigger');
+    if (trigger) {
+      trigger.addEventListener('click', () => {
+        const isOpen = card.classList.contains('open');
+        // Close all cards
+        faqCards.forEach(c => c.classList.remove('open'));
+        // Toggle current card
+        if (!isOpen) {
+          card.classList.add('open');
         }
       });
     }
   });
 
   // 3. City Tab Switching
-  const cityPills = document.querySelectorAll('.city-pill');
-  const cityDistrictPanels = document.querySelectorAll('.districts-panel');
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const districtPanels = document.querySelectorAll('.districts-panel');
 
-  cityPills.forEach(pill => {
-    pill.addEventListener('click', (e) => {
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const targetCity = pill.getAttribute('data-city');
+      const targetCity = btn.getAttribute('data-city');
 
-      cityPills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-      cityDistrictPanels.forEach(panel => {
+      districtPanels.forEach(panel => {
         if (panel.id === 'panel-' + targetCity) {
           panel.style.display = 'grid';
         } else {
