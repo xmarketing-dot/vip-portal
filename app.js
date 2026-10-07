@@ -1,52 +1,50 @@
 /**
- * VIP PORTAL — HIGH PERFORMANCE INTERACTIVE CLIENT SCRIPT
+ * VIP PORTAL — CLEAN CORPORATE CLIENT INTERACTIONS
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Dynamic Live Online Counter Simulation
-  const onlineCountEl = document.getElementById('live-online-count');
-  if (onlineCountEl) {
-    let currentOnline = Math.floor(Math.random() * (1620 - 1380 + 1)) + 1380;
-    onlineCountEl.textContent = currentOnline.toLocaleString('tr-TR');
+  // 1. Live Online Counter
+  const counterEl = document.getElementById('online-counter');
+  if (counterEl) {
+    let count = Math.floor(Math.random() * (1580 - 1420 + 1)) + 1420;
+    counterEl.textContent = count.toLocaleString('tr-TR');
 
     setInterval(() => {
-      const delta = Math.floor(Math.random() * 5) - 2; // -2 to +2
-      currentOnline = Math.max(1200, currentOnline + delta);
-      onlineCountEl.textContent = currentOnline.toLocaleString('tr-TR');
-    }, 4500);
+      const delta = Math.floor(Math.random() * 5) - 2;
+      count = Math.max(1200, count + delta);
+      counterEl.textContent = count.toLocaleString('tr-TR');
+    }, 5000);
   }
 
-  // 2. FAQ Accordion Toggle (.faq-card.open)
-  const faqCards = document.querySelectorAll('.faq-card');
-  faqCards.forEach(card => {
-    const trigger = card.querySelector('.faq-trigger');
-    if (trigger) {
-      trigger.addEventListener('click', () => {
-        const isOpen = card.classList.contains('open');
-        // Close all cards
-        faqCards.forEach(c => c.classList.remove('open'));
-        // Toggle current card
+  // 2. Clean FAQ Accordion
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const questionBtn = item.querySelector('.faq-question');
+    if (questionBtn) {
+      questionBtn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('active');
+        faqItems.forEach(i => i.classList.remove('active'));
         if (!isOpen) {
-          card.classList.add('open');
+          item.classList.add('active');
         }
       });
     }
   });
 
-  // 3. City Tab Switching
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const districtPanels = document.querySelectorAll('.districts-panel');
+  // 3. City Tabs Switching
+  const tabItems = document.querySelectorAll('.tab-item');
+  const cityPanels = document.querySelectorAll('.city-panel');
 
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  tabItems.forEach(tab => {
+    tab.addEventListener('click', (e) => {
       e.preventDefault();
-      const targetCity = btn.getAttribute('data-city');
+      const targetCity = tab.getAttribute('data-city');
 
-      tabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      tabItems.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
 
-      districtPanels.forEach(panel => {
-        if (panel.id === 'panel-' + targetCity) {
+      cityPanels.forEach(panel => {
+        if (panel.id === 'grid-' + targetCity) {
           panel.style.display = 'grid';
         } else {
           panel.style.display = 'none';
@@ -55,15 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4. Preconnect and DNS Prefetch optimization for outgoing target platforms
-  const preconnectDomains = [
-    'https://www.besteskort.online',
-    'https://escturkiye.devs.surf'
-  ];
-  preconnectDomains.forEach(domain => {
+  // 4. DNS Prefetch for Destination Platforms
+  ['https://www.besteskort.online', 'https://escturkiye.devs.surf'].forEach(url => {
     const link = document.createElement('link');
     link.rel = 'dns-prefetch';
-    link.href = domain;
+    link.href = url;
     document.head.appendChild(link);
   });
 });
