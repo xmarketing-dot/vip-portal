@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+Sitemap: https://vipportal.online/sitemap.xml
