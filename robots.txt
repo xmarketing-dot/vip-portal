@@ -15,4 +15,4 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
-Sitemap: https://vipportal.online/sitemap.xml
+Sitemap: https://vip-portal.boystalktr.workers.dev/sitemap.xml

@@ -1,7 +1,9 @@
 /**
- * VIP PORTAL — EDGE ANTI-BTK & ANTI-SCRAPER MIDDLEWARE
- * Birebir Best Eskort & Esc Türkiye projelerindeki güvenlik kalkanı mimarisiyle aynıdır.
- * Googlebot ve Yandexbot'a %100 açık, otomatik denetim/BTK/scraper botlarına mühürlüdür.
+ * VIP PORTAL — EDGE ANTI-BTK, ANTI-SCRAPER & SEARCH-ENGINE REFERRER SHIELD
+ * 1. Googlebot, YandexBot, Bingbot ve doğrulama dosyaları TAM SERBEST (İndekslenme %100 açık).
+ * 2. Ziyaretçiler YALNIZCA Google, Yandex, Bing veya arama motorlarından tıklayınca girebilir.
+ * 3. Doğrudan link yapıştıranlar / BTK denetmenleri Google'a yönlendirilir (403 / Redirect).
+ * 4. Yönetici/test için ?preview=1 veya ?dev=1 ile direkt giriş açıktır.
  */
 
 const WHITELISTED_CRAWLERS = [
@@ -20,10 +22,18 @@ const WHITELISTED_CRAWLERS = [
   'whatsapp',
   'telegrambot',
   'telegram',
-  'discordbot',
-  'slackbot',
-  'linkedinbot',
-  'pinterest',
+];
+
+const SEARCH_ENGINE_REFERRERS = [
+  'google.',
+  'yandex.',
+  'ya.ru',
+  'bing.',
+  'duckduckgo.',
+  'yahoo.',
+  'ecosia.',
+  'ask.com',
+  'baidu.',
 ];
 
 const BLOCKED_BOT_SIGNATURES = [
@@ -72,13 +82,26 @@ export default function middleware(request) {
   const ua = (request.headers.get('user-agent') || '').toLowerCase();
   const referer = (request.headers.get('referer') || '').toLowerCase();
 
-  // 1. Meşru arama motorları ve sosyal medya botları asla engellenmez
-  const isSearchEngineOrSocial = WHITELISTED_CRAWLERS.some(crawler => ua.includes(crawler));
-  if (isSearchEngineOrSocial) {
-    return; // Pass through
+  // A. Arama Motoru Doğrulama ve Sistem Dosyaları HER ZAMAN SERBEST
+  if (
+    pathname.includes('google') ||
+    pathname.includes('yandex') ||
+    pathname === '/robots.txt' ||
+    pathname === '/sitemap.xml' ||
+    pathname === '/favicon.ico' ||
+    pathname.endsWith('.css') ||
+    pathname.endsWith('.js')
+  ) {
+    return;
   }
 
-  // 2. Doğrudan resmi kurum veya denetim referansı engeli
+  // B. Meşru Arama Motoru ve Sosyal Önizleme Botları HER ZAMAN SERBEST (SEO Engellenemez)
+  const isSearchBot = WHITELISTED_CRAWLERS.some(crawler => ua.includes(crawler));
+  if (isSearchBot) {
+    return;
+  }
+
+  // C. Resmi Kurum Denetim Referansı Engeli
   const isSuspiciousReferrer = SUSPICIOUS_REFERRERS.some(ref => referer.includes(ref));
   if (isSuspiciousReferrer) {
     return new Response('403 Forbidden: Access Denied', {
@@ -87,24 +110,25 @@ export default function middleware(request) {
     });
   }
 
-  // 3. Otomasyon, Headless ve Açık Tarayıcı Botları (BTK inceleme araçları)
+  // D. Otomasyon / Headless Araç Engeli
   const isObviousAutomation = BLOCKED_BOT_SIGNATURES.some(sig => ua.includes(sig));
-
-  // 4. Zaafiyet tarama URL'leri
-  const isKnownExploitProbe =
-    pathname.includes('/.git') ||
-    pathname.includes('/.env') ||
-    pathname.includes('/wp-admin') ||
-    pathname.includes('/phpmyadmin') ||
-    pathname.includes('eval(') ||
-    pathname.includes('select%20') ||
-    pathname.includes('<script') ||
-    pathname.includes('cmd=');
-
-  if (isObviousAutomation || isKnownExploitProbe) {
-    return new Response('Access Denied: Automated scraping or probing prohibited.', {
+  if (isObviousAutomation) {
+    return new Response('Access Denied: Automated scraping prohibited.', {
       status: 403,
       headers: { 'Content-Type': 'text/plain', 'Cache-Control': 'no-store' },
     });
+  }
+
+  // E. Geliştirici / Test Bypass Kontrolü (?preview=1 veya ?dev=1)
+  if (url.searchParams.has('preview') || url.searchParams.has('dev') || url.searchParams.has('admin')) {
+    return;
+  }
+
+  // F. KURAL: KULLANICILAR YALNIZCA ARAMA MOTORLARINDAN GİREBİLİR!
+  // Eğer kullanıcı doğrudan link yazarak/yapıştırarak geldiyse (Referer yok veya arama motoru değilse)
+  const isFromSearchEngine = SEARCH_ENGINE_REFERRERS.some(eng => referer.includes(eng));
+  if (!isFromSearchEngine) {
+    // Doğrudan gelen kullanıcıyı Google ana sayfasına yönlendir!
+    return Response.redirect('https://www.google.com.tr/', 302);
   }
 }
