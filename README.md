@@ -4,7 +4,7 @@ Modern, monokrom & romantik lüks tasarımlı, Google ve Yandex SEO uyumlu VIP e
 
 ## Platformlar
 - [Best Eskort Online](https://www.besteskort.online/)
-- [Esc Türkiye](https://escturkiye.devs.surf/)
+- [Esc Türkiye](https://escturkiye.space/)
 
 ## Teknolojiler
 - Saf HTML5, CSS3 ve Vanilla JavaScript
